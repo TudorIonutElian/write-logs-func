@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:eu-central-1:927096366770:custom-cloudwatch-sns-topic:7207024d-3486-4abb-befd-e5f26616c401",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "791f3cf8-50b0-5bae-9b93-62b45c54d4bb",
+                "TopicArn": "arn:aws:sns:eu-central-1:927096366770:custom-cloudwatch-sns-topic",
+                "Subject": "Amazon S3 Notification",
+                "Message": "{\"Records\":[{\"eventVersion\":\"2.1\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"eu-central-1\",\"eventTime\":\"2024-02-18T13:48:19.590Z\",\"eventName\":\"ObjectCreated:Put\",\"userIdentity\":{\"principalId\":\"AWS:AROA5PWZ742ZMR72VQB5D:write-payload-func\"},\"requestParameters\":{\"sourceIPAddress\":\"18.185.131.197\"},\"responseElements\":{\"x-amz-request-id\":\"JYX0MJSE7T1SH8FB\",\"x-amz-id-2\":\"GBYOPLsTt4CGRuPAFwfBphUaRYiqK7fJBneMlWhlk0prmjhqfplKRokZXfW792/r2l9P+q/zk/Rm5qEhVt4gMfatjEgu8REW\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"tf-s3-topic-20240218132157541200000002\",\"bucket\":{\"name\":\"cloudwatch-mock-lambda-bucket\",\"ownerIdentity\":{\"principalId\":\"A3SYP3IPHXTMHD\"},\"arn\":\"arn:aws:s3:::cloudwatch-mock-lambda-bucket\"},\"object\":{\"key\":\"1708264098597.txt\",\"size\":7208,\"eTag\":\"c0c749b270d7216ccd44d6e60ce9b209\",\"sequencer\":\"0065D20AA336B7BE0E\"}}}]}",
+                "Timestamp": "2024-02-18T13:48:20.156Z",
+                "SignatureVersion": "1",
+                "Signature": "TIMcL3IVlfeIIaMF90/iYEtALiMV3LCb40xD+nRJb4BCNm0NZOBXeprKC2xClmOJMz3ntZgcWzr8ix3vUsHCcX5KDbAVaFqqmjWXv/mpSQpX1gzrTFomXTJJEKxcypIEwyGhUmQQTMW4ZiZhRMJOfLdKbuL4z50DGt4x3gR9aq3KKedU4PRMlHN7oSXN1trgaY9OBOkOUw0EYAUXqrt2MmH22IpGpS71vDdWVHVtFpTkc7Db1YWhvBVcW3mj8FTNfVwT6K+fbTjCTAMWgoxBWNXz1sePVmayD+5Y9ppUOKXng3F2KtorY5nlix4JjQLNJI3RY8XlUSDCP6wBRog8DA==",
+                "SigningCertUrl": "https://sns.eu-central-1.amazonaws.com/SimpleNotificationService-60eadc530605d63b8e62a523676ef735.pem",
+                "UnsubscribeUrl": "https://sns.eu-central-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:eu-central-1:927096366770:custom-cloudwatch-sns-topic:7207024d-3486-4abb-befd-e5f26616c401",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}

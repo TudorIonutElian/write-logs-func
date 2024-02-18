@@ -1,18 +1,13 @@
+const {getFileKey} = require('./functions/getFileKey');
+
 exports.handler = async (event) => {
-    // Your Lambda function logic here
   
-    const response = {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-      message: JSON.stringify(event),
-      // Add more data as needed
-    })
-  };
+  const newFileKey = getFileKey(event);
 
-  console.log(`Received event: ${JSON.stringify(event)}`);
+  console.log(`File key is ${newFileKey}`);
 
-  return response;
+  return JSON.stringify({
+    statusCode: 200,
+    action: "loggedIntoDatabase"
+  });
 };
