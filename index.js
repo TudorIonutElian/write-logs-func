@@ -1,12 +1,12 @@
 const {getFileKey} = require('./functions/getFileKey');
 const {downloadFileFromS3} = require('./functions/downloadFile');
 const fs = require('fs');
-const path = require('path');
 const { getLocalFileContent } = require('./functions/getLocalFileContent');
 
 exports.handler = async (event) => {
   
   const newFileKey = getFileKey(event);
+  console.log(`Event: ${JSON.stringify(event)}`);
 
   // parse the new file line by line
   // connect to database
