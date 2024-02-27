@@ -23,11 +23,8 @@ const downloadFileFromS3 = async (fileKey) => {
         console.log(`Lines array: ${JSON.stringify(strArray)}`);
        
         const keyValuePairs = strArray.map((line) => {
-            console.log(`Line: ${line}`);
-            console.log(`Line split: ${line.split(', ')}`);
-            console.log(`Line split map: ${line.split(', ').map(pair => pair.split(': '))}`);
-            console.log(`Line split map reduce: ${line.split(', ').map(pair => pair.split(': ')).reduce((obj, [key, value]) => ({...obj, [key]: value}), {})}`);
-            return line.split(', ').map(pair => pair.split(': ')).reduce((obj, [key, value]) => ({...obj, [key]: value}), {});
+            const lineSplit = line.split(', ');
+            console.log(`Line split: ${JSON.stringify(lineSplit)}`);
         });
         console.log(keyValuePairs);
         
