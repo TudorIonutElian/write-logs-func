@@ -21,8 +21,11 @@ const downloadFileFromS3 = async (fileKey) => {
         const strArray = str.split('\n');
         
         console.log(`Lines array: ${JSON.stringify(strArray)}`);
-        
-        
+       
+        const keyValuePairs = strArray.map((line) => {
+            line.split(', ').map(pair => pair.split(': ')).reduce((obj, [key, value]) => ({...obj, [key]: value}), {})
+        });
+        console.log(keyValuePairs);
         
         const tmpDirectory = '/tmp';
         const temporaryFilePath = `${tmpDirectory}/${fileKey}`;
