@@ -26,7 +26,7 @@ const downloadFileFromS3 = async (fileKey) => {
             const lineSplit = line.split(', ');
             const lineKeyValue = lineSplit.reduce((acc, curr) => {
                 const [key, value] = curr.split(':');
-                return { ...acc, [key]: value };
+                return { [key]: value };
             });
             console.log(`Line lineKeyValue: ${JSON.stringify(lineKeyValue)}`);
         });
