@@ -18,8 +18,12 @@ const downloadFileFromS3 = async (fileKey) => {
     try {
         const response = await s3.send(command);
         const str = await response.Body.transformToString();
-        console.log(`File content: ${str}`);
-
+        const strArray = str.split('\n');
+        
+        console.log(`Lines array: ${strArray}`);
+        
+        
+        
         const tmpDirectory = '/tmp';
         const temporaryFilePath = `${tmpDirectory}/${fileKey}`;
         fs.writeFileSync(temporaryFilePath, str);
