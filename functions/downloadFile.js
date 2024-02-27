@@ -23,7 +23,7 @@ const downloadFileFromS3 = async (fileKey) => {
         console.log(`Lines array: ${JSON.stringify(strArray)}`);
        
         const keyValuePairs = strArray.map((line) => {
-            line.split(', ').map(pair => pair.split(': ')).reduce((obj, [key, value]) => ({...obj, [key]: value}), {})
+            return line.split(', ').map(pair => pair.split(': ')).reduce((obj, [key, value]) => ({...obj, [key]: value}), {});
         });
         console.log(keyValuePairs);
         
