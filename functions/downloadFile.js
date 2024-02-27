@@ -20,7 +20,7 @@ const downloadFileFromS3 = async (fileKey) => {
         const str = await response.Body.transformToString();
         const strArray = str.split('\n');
         
-        console.log(`Lines array: ${strArray}`);
+        console.log(`Lines array: ${JSON.stringify(strArray)}`);
         
         
         
