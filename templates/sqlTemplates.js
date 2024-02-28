@@ -27,6 +27,22 @@ sqlTemplates.createTable = `CREATE TABLE IF NOT EXISTS \`logs\` (
     requestAuthorizationPolicy BOOLEAN NOT NULL DEFAULT true,
     requestScanned boolean NOT NULL DEFAULT true
 );`;
+
+sqlTemplates.insertLog = `INSERT INTO \`logs\` (
+    requestType, requestUrl, requestIp, requestVpc, requestRegion, requestAvailabilityZone, requestIamRole, requestApiKey, requestUsername, requestAuthorizationPolicy, requestScanned
+) VALUES (
+    requestTypePlaceHolder,
+    requestUrlPlaceHolder,
+    requestIpPlaceHolder,
+    requestVpcPlaceHolder,
+    requestRegionPlaceHolder,
+    requestAvailabilityZonePlaceHolder,
+    requestIamRolePlaceHolder,
+    requestApiKeyPlaceHolder,
+    requestUsernamePlaceHolder,
+    requestAuthorizationPolicyPlaceHolder,
+    requestScannedPlaceHolder
+);`;
 	
 
 module.exports = { sqlTemplates };

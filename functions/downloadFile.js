@@ -33,7 +33,19 @@ const downloadFileFromS3 = async (fileKey) => {
         const createDatabaseConnection = await runQuery(sqlTemplates.createDatabase);
         const createTableConnection = await runQuery(sqlTemplates.createTable, 'cloudwatch_logs');
 
-        console.log('Database and table created successfully');
+        const query = sqlTemplates.insertLog
+            .replace('requestTypePlaceHolder', fullObjectWrite.requestType)
+            .replace('requestUrlPlaceHolder', fullObjectWrite.requestUrl)
+            .replace('requestIpPlaceHolder', fullObjectWrite.requestIp)
+            .replace('requestVpcPlaceHolder', fullObjectWrite.requestVpc)
+            .replace('requestRegionPlaceHolder', fullObjectWrite.requestRegion)
+            .replace('requestAvailabilityZonePlaceHolder', fullObjectWrite.requestAvailabilityZone)
+            .replace('requestIamRolePlaceHolder', fullObjectWrite.requestIamRole)
+            .replace('requestApiKeyPlaceHolder', fullObjectWrite.requestApiKey)
+            .replace('requestUsernamePlaceHolder', fullObjectWrite.requestUsername)
+            .replace('requestAuthorizationPolicyPlaceHolder', fullObjectWrite.requestAuthorizationPolicy)
+            .replace('requestScannedPlaceHolder', fullObjectWrite.requestScanned);
+        console.log(`Query: ${query}`);
 
     } catch (err) {
         console.error(err);
