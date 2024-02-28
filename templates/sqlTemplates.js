@@ -29,7 +29,17 @@ sqlTemplates.createTable = `CREATE TABLE IF NOT EXISTS \`logs\` (
 );`;
 
 sqlTemplates.insertLog = `INSERT INTO \`logs\` (
-    requestType, requestUrl, requestIp, requestVpc, requestRegion, requestAvailabilityZone, requestIamRole, requestApiKey, requestUsername, requestAuthorizationPolicy, requestScanned
+    requestType, 
+    requestUrl, 
+    requestIp, 
+    requestVpc, 
+    requestRegion, 
+    requestAvailabilityZone, 
+    requestIamRole, 
+    requestApiKey, 
+    requestUsername, 
+    requestAuthorizationPolicy, 
+    requestScanned
 ) VALUES (
     requestTypePlaceHolder,
     requestUrlPlaceHolder,

@@ -46,6 +46,7 @@ const downloadFileFromS3 = async (fileKey) => {
             .replace('requestAuthorizationPolicyPlaceHolder', fullObjectWrite.requestAuthorizationPolicy)
             .replace('requestScannedPlaceHolder', fullObjectWrite.requestScanned);
         console.log(`Query: ${query}`);
+        console.log(`Full object: ${JSON.stringify(fullObjectWrite)}`);
 
     } catch (err) {
         console.error(err);
