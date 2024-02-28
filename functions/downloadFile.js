@@ -1,6 +1,6 @@
 const { GetObjectCommand, S3Client } = require('@aws-sdk/client-s3');
 const { runQuery } = require('./databaseConnector');
-const { sqlTemplates } = require('./templates/sqlTemplates');
+const { sqlTemplates } = require('../templates/sqlTemplates');
 const fs = require('fs');
 
 const downloadFileFromS3 = async (fileKey) => {
