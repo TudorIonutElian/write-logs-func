@@ -36,7 +36,7 @@ const downloadFileFromS3 = async (fileKey) => {
         const query = sqlTemplates.insertLog
             .replace('requestTypePlaceHolder', fullObjectWrite.requestUrl)
             .replace('requestUrlPlaceHolder', fullObjectWrite.requestUrl)
-            .replace('requestIpPlaceHolder', `${fullObjectWrite.requestIp}`)
+            .replace('requestIpPlaceHolder', `[${fullObjectWrite.requestIp}]`)
             .replace('requestVpcPlaceHolder', fullObjectWrite.requestVpc)
             .replace('requestRegionPlaceHolder', fullObjectWrite.requestRegion)
             .replace('requestAvailabilityZonePlaceHolder', fullObjectWrite.requestAvailabilityZone)
