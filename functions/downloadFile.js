@@ -33,18 +33,31 @@ const downloadFileFromS3 = async (fileKey) => {
         const createDatabaseConnection = await runQuery(sqlTemplates.createDatabase);
         const createTableConnection = await runQuery(sqlTemplates.createTable, 'cloudwatch_logs');
 
-        const query = sqlTemplates.insertLog
-            .replace('requestTypePlaceHolder', fullObjectWrite.requestUrl)
-            .replace('requestUrlPlaceHolder', fullObjectWrite.requestUrl)
-            .replace('requestIpPlaceHolder', `[${fullObjectWrite.requestIp}]`)
-            .replace('requestVpcPlaceHolder', fullObjectWrite.requestVpc)
-            .replace('requestRegionPlaceHolder', fullObjectWrite.requestRegion)
-            .replace('requestAvailabilityZonePlaceHolder', fullObjectWrite.requestAvailabilityZone)
-            .replace('requestIamRolePlaceHolder', fullObjectWrite.requestIamRole)
-            .replace('requestApiKeyPlaceHolder', fullObjectWrite.requestApiKey)
-            .replace('requestUsernamePlaceHolder', fullObjectWrite.requestUsername)
-            .replace('requestAuthorizationPolicyPlaceHolder', fullObjectWrite.requestAuthorizationPolicy)
-            .replace('requestScannedPlaceHolder', fullObjectWrite.requestScanned);
+        const query = `INSERT INTO \`logs\` (
+            requestType, 
+            requestUrl, 
+            requestIp, 
+            requestVpc, 
+            requestRegion, 
+            requestAvailabilityZone, 
+            requestIamRole, 
+            requestApiKey, 
+            requestUsername, 
+            requestAuthorizationPolicy, 
+            requestScanned
+        ) VALUES (
+            ${fullObjectWrite.requestType},
+            ${fullObjectWrite.requestUrl},
+            ${fullObjectWrite.requestIp},
+            ${fullObjectWrite.requestVpc},
+            ${fullObjectWrite.requestRegion},
+            ${fullObjectWrite.requestAvailabilityZone},
+            ${fullObjectWrite.requestIamRole},
+            ${fullObjectWrite.requestApiKey},
+            ${fullObjectWrite.requestUsername},
+            ${fullObjectWrite.requestAuthorizationPolicy},
+            ${fullObjectWrite.requestScanned}
+        );`
         console.log(`Query: ${query}`);
         const insertLogConnection = await runQuery(query, 'cloudwatch_logs');
         console.log(`Full object: ${JSON.stringify(fullObjectWrite)}`);
