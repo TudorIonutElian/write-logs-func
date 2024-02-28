@@ -6,8 +6,8 @@
  * @property {string} createTable - SQL template for creating the table
  */
 const sqlTemplates = {
-    createDatabase: 'CREATE DATABASE IF NOT EXISTS \`cloudwatch_logs\`;',
-    useDatabase: 'USE \`cloudwatch_logs\`;',
+    createDatabase: `CREATE DATABASE IF NOT EXISTS \`cloudwatch_logs\`;`,
+    useDatabase: `USE \`cloudwatch_logs\`;`,
     createTable: `CREATE TABLE IF NOT EXISTS \`logs\` (
         \`id\` INT AUTO_INCREMENT PRIMARY KEY,
         \`requestType\` VARCHAR(5) NOT NULL,
