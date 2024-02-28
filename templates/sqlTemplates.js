@@ -13,8 +13,19 @@ const sqlTemplates = {
 
 sqlTemplates.createDatabase = `CREATE DATABASE IF NOT EXISTS \`cloudwatch_logs\`;`;
 sqlTemplates.useDatabase = `USE \`cloudwatch_logs\`;`;
-sqlTemplates.createTable = `USE \`cloudwatch_logs\`; CREATE TABLE IF NOT EXISTS \`logs\` (id INT(11) PRIMARY KEY AUTO_INCREMENT, requestType VARCHAR(5) NOT NULL, requestUrl VARCHAR(5) NOT NULL, request_ip VARCHAR(50) NOT NULL, `;
-sqlTemplates.createTable += `request_vpc\` VARCHAR(50) NOT NULL, request_region VARCHAR(50) NOT NULL, request_availability_zone VARCHAR(50) NOT NULL, request_iam_role VARCHAR(50) NOT NULL, request_api_key VARCHAR(50) NOT NULL, `;
-sqlTemplates.createTable += `request_username VARCHAR(50) NOT NULL, request_authorization_policy BOOLEAN NOT NULL DEFAULT FALSE, request_scanned BOOLEAN NOT NULL DEFAULT FALSE);`;
+sqlTemplates.createTable = `USE \`cloudwatch_logs\`; CREATE TABLE IF NOT EXISTS logs (
+	id INT PRIMARY KEY auto_increment NOT NULL,
+	requestType VARCHAR(10) NOT NULL,
+	requestUrl VARCHAR(10) NOT NULL,
+	requestIp VARCHAR(10) NOT NULL,
+	requestVpc VARCHAR(50) NOT NULL,
+	requestRegion VARCHAR(50) NOT NULL,
+	requestAvailabilityZone VARCHAR(50) NOT NULL,
+	requestIamRole VARCHAR(50) NOT NULL,
+	requestApiKey VARCHAR(50) NOT NULL,
+	requestUsername VARCHAR(50) NOT NULL,
+	requestAuthorizationPolicy BOOLEAN NOT NULL DEFAULT true,
+	requestScanned boolean NOT NULL DEFAULT true
+);`;
 
 module.exports = { sqlTemplates };
