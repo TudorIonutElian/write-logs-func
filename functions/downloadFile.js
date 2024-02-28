@@ -33,7 +33,7 @@ const downloadFileFromS3 = async (fileKey) => {
         });
 
         const connection = connectToDatabase();
-        const query = `SHOW DATABASES;`;
+        const query = `CREATE DATABASE IF NOT EXITS 'cloudwatch_logs';`;
         const results = await runQuery(query);
 
         console.log(`Results: ${JSON.stringify(results)}`);
