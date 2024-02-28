@@ -32,9 +32,8 @@ const downloadFileFromS3 = async (fileKey) => {
             });
         });
 
-        const connection = connectToDatabase();
-        const query = `CREATE DATABASE IF NOT EXITS 'cloudwatch_logs';`;
-        const results = await runQuery(query);
+        const query = `CREATE DATABASE IF NOT EXITS \`cloudwatch_logs\`;`;
+        const results = runQuery(query);
 
         console.log(`Results: ${JSON.stringify(results)}`);
     
