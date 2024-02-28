@@ -13,6 +13,6 @@ const sqlTemplates = {
 
 sqlTemplates.createDatabase = `CREATE DATABASE IF NOT EXISTS \`cloudwatch_logs\`;`;
 sqlTemplates.useDatabase = `USE \`cloudwatch_logs\`;`;
-sqlTemplates.createTable = `USE \`cloudwatch_logs\`; CREATE TABLE IF NOT EXISTS \`logs\` (\`id\` INT PRIMARY KEY auto_increment, \`request_type\` VARCHAR(10) NOT NULL);`;
+sqlTemplates.createTable = `USE \`cloudwatch_logs\`; CREATE TABLE IF NOT EXISTS \`logs\` (id INT PRIMARY KEY auto_increment;`;
 
 module.exports = { sqlTemplates };
