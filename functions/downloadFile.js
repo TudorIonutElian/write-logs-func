@@ -1,4 +1,5 @@
 const { GetObjectCommand, S3Client } = require('@aws-sdk/client-s3');
+const { connectToDatabase, runQuery } = require('./databaseConnector');
 const fs = require('fs');
 
 const downloadFileFromS3 = async (fileKey) => {
@@ -31,7 +32,13 @@ const downloadFileFromS3 = async (fileKey) => {
             });
         });
 
-        console.log(`Line lineKeyValue: ${JSON.stringify(fullObjectWrite)}`);
+        const connection = connectToDatabase();
+        const query = `SHOW DATABASES;`;
+        const results = await runQuery(query);
+
+        console.log(`Results: ${JSON.stringify(results)}`);
+    
+
         
         const tmpDirectory = '/tmp';
         const temporaryFilePath = `${tmpDirectory}/${fileKey}`;
