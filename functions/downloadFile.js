@@ -24,8 +24,10 @@ const downloadFileFromS3 = async (fileKey) => {
        
         const keyValuePairs = strArray.map((line) => {
             const lineSplit = line.split(', ');
-            const lineKeyValue = lineSplit.reduce((acc, curr) => {
+            console.log(`Line split: ${lineSplit}`);
+            lineSplit.reduce((acc, curr) => {
                 const [key, value] = curr.split(':');
+                console.log(`Key: ${key}, Value: ${value}`);
                 fullObjectWrite[key] = value;
             });
         });
