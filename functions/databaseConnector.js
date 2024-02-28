@@ -8,7 +8,7 @@ function connectToDatabase() {
     });
 }
 
-function runQuery(query) {
+async function runQuery(query) {
     const connection = connectToDatabase();
     return new Promise((resolve, reject) => {
         connection.query(query, (error, results) => {
