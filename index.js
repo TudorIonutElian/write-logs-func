@@ -21,6 +21,6 @@ exports.handler = async (event) => {
 
   return JSON.stringify({
     statusCode: 200,
-    fileContentData: getLocalFileContent(`/tmp/${newFileKey}`)
+    logsWritten: true,
   });
 };
