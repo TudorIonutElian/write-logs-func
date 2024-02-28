@@ -34,18 +34,19 @@ const downloadFileFromS3 = async (fileKey) => {
         const createTableConnection = await runQuery(sqlTemplates.createTable, 'cloudwatch_logs');
 
         const query = sqlTemplates.insertLog
-            .replace('requestTypePlaceHolder', fullObjectWrite.requestType)
+            .replace('requestTypePlaceHolder', fullObjectWrite.requestUrl)
             .replace('requestUrlPlaceHolder', fullObjectWrite.requestUrl)
-            .replace('requestIpPlaceHolder', fullObjectWrite.requestIp)
-            .replace('requestVpcPlaceHolder', fullObjectWrite.requestVpc)
-            .replace('requestRegionPlaceHolder', fullObjectWrite.requestRegion)
-            .replace('requestAvailabilityZonePlaceHolder', fullObjectWrite.requestAvailabilityZone)
+            .replace('requestIpPlaceHolder', fullObjectWrite.request_ip)
+            .replace('requestVpcPlaceHolder', fullObjectWrite.request_vpc)
+            .replace('requestRegionPlaceHolder', fullObjectWrite.request_region)
+            .replace('requestAvailabilityZonePlaceHolder', fullObjectWrite.request_availability_zone)
             .replace('requestIamRolePlaceHolder', fullObjectWrite.requestIamRole)
-            .replace('requestApiKeyPlaceHolder', fullObjectWrite.requestApiKey)
-            .replace('requestUsernamePlaceHolder', fullObjectWrite.requestUsername)
-            .replace('requestAuthorizationPolicyPlaceHolder', fullObjectWrite.requestAuthorizationPolicy)
-            .replace('requestScannedPlaceHolder', fullObjectWrite.requestScanned);
+            .replace('requestApiKeyPlaceHolder', fullObjectWrite.request_api_key)
+            .replace('requestUsernamePlaceHolder', fullObjectWrite.request_username)
+            .replace('requestAuthorizationPolicyPlaceHolder', fullObjectWrite.request_authorization_policy)
+            .replace('requestScannedPlaceHolder', fullObjectWrite.request_scanned);
         console.log(`Query: ${query}`);
+        const insertLogConnection = await runQuery(query, 'cloudwatch_logs');
         console.log(`Full object: ${JSON.stringify(fullObjectWrite)}`);
 
     } catch (err) {
