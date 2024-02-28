@@ -13,7 +13,7 @@ const sqlTemplates = {
 
 sqlTemplates.createDatabase = `CREATE DATABASE IF NOT EXISTS \`cloudwatch_logs\`;`;
 sqlTemplates.useDatabase = `USE \`cloudwatch_logs\`;`;
-sqlTemplates.createTable = `${sqlTemplates.useDatabase}; CREATE TABLE IF NOT EXISTS \`logs\` (
+sqlTemplates.createTable = `USE \`cloudwatch_logs\`; CREATE TABLE IF NOT EXISTS \`logs\` (
     \`id\` INT AUTO_INCREMENT PRIMARY KEY,
     \`requestType\` VARCHAR(5) NOT NULL,
     \`requestUrl\` VARCHAR(5) NOT NULL,
