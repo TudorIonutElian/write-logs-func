@@ -31,7 +31,6 @@ const downloadFileFromS3 = async (fileKey) => {
         });
 
         const createDatabaseConnection = await runQuery(sqlTemplates.createDatabase);
-        const useDatabaseConnection = await runQuery(sqlTemplates.useDatabase);
         const createTableConnection = await runQuery(sqlTemplates.createTable);
 
         console.log('Database and table created successfully');
