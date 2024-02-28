@@ -32,16 +32,11 @@ const downloadFileFromS3 = async (fileKey) => {
             });
         });
 
-        const query = `CREATE DATABASE IF NOT EXITS \`cloudwatch_logs\`;`;
+        const query = `CREATE DATABASE IF NOT EXITS cloudwatch_logs;`;
         const results = await runQuery(query);
 
         console.log(`Results: ${JSON.stringify(results)}`);
-    
 
-        
-        const tmpDirectory = '/tmp';
-        const temporaryFilePath = `${tmpDirectory}/${fileKey}`;
-        fs.writeFileSync(temporaryFilePath, str);
     } catch (err) {
     console.error(err);
     }
