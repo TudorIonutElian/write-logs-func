@@ -46,9 +46,9 @@ const downloadFileFromS3 = async (fileKey) => {
             requestAuthorizationPolicy, 
             requestScanned
         ) VALUES (
-            ${fullObjectWrite.requestType},
             ${fullObjectWrite.requestUrl},
-            ${fullObjectWrite.requestIp},
+            ${fullObjectWrite.requestUrl},
+            '10.2.23.36',
             ${fullObjectWrite.requestVpc},
             ${fullObjectWrite.requestRegion},
             ${fullObjectWrite.requestAvailabilityZone},
