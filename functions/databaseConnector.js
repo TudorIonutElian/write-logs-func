@@ -1,11 +1,11 @@
 const mysql2 = require('mysql2');
 
-function connectToDatabase(databaseName) {
+function connectToDatabase(databaseName = null) {
     return mysql2.createConnection({
         host: process.env.rds_instance_endpoint,
         user: process.env.rds_instance_username,
         password: process.env.rds_instance_password,
-        database: databaseName ?? process.env.rds_instance_database_name,
+        database: databaseName ?? null,
     });
 }
 
@@ -15,7 +15,7 @@ function connectToDatabase(databaseName) {
  * @param {*} databaseName 
  * @returns 
  */
-async function runQuery(query, databaseName) {
+async function runQuery(query, databaseName = null) {
     const connection = connectToDatabase(databaseName);
     return new Promise((resolve, reject) => {
         connection.query(query, (error, results) => {
