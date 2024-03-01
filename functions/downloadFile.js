@@ -31,14 +31,14 @@ const downloadFileFromS3 = async (fileKey) => {
             }
         });
 
-        const createDatabaseConnection = await runQuery(sqlTemplates.createDatabase);
-        const createTableConnection = await runQuery(sqlTemplates.createTable, 'cloudwatch_logs');
+        await runQuery(sqlTemplates.createDatabase);
+        await runQuery(sqlTemplates.createTable, 'cloudwatch_logs');
         console.log(`Full object: ${JSON.stringify(fullObjectWrite)}`);
         
         const query = `INSERT INTO \`logs\` (requestType, requestUrl, requestIp, requestVpc, requestRegion, requestAvailabilityZone, requestIamRole, requestApiKey, requestUsername, requestAuthorizationPolicy, requestScanned) 
         VALUES ('${fullObjectWrite.requestType}', '${fullObjectWrite.requestUrl}', '${fullObjectWrite.requestIp}','${fullObjectWrite.requestVpc}', '${fullObjectWrite.requestRegion}', '${fullObjectWrite.requestAvailabilityZone}', '${fullObjectWrite.requestIamRole}', '${fullObjectWrite.requestApiKey}', '${fullObjectWrite.requestUsername}', ${fullObjectWrite.requestAuthorizationPolicy}, ${fullObjectWrite.requestScanned});`;
         console.log(`Query: ${query}`);
-        const insertLogConnection = await runQuery(query, 'cloudwatch_logs');
+        await runQuery(query, 'cloudwatch_logs');
        
 
     } catch (err) {
