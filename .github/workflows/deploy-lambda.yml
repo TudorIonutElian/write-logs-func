@@ -1,0 +1,41 @@
+name: Deploy lambda write-logs-func
+
+# Trigger deployment only on push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Deploy lambda
+    runs-on: ubuntu-latest
+    permissions: write-all
+    env: 
+      RUN_NUMBER: ${{ github.run_number }}
+    steps:
+      - name: Login to Vultr Instance and deploy lambda
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VULTR_INSTANCE_IP }}
+          username: ${{ secrets.VULTR_INSTANCE_USER }}
+          key: ${{ secrets.VULTR_INSTANCE_KEY }}
+          script: |
+            cd cloudwatch-mock
+            [ -e write-logs-func.zip ] && rm write-logs-func.zip
+            [ -e write_logs_func.zip ] && rm write_logs_func.zip
+            git pull
+            git stash
+            curl -L -o write-logs-func.zip https://github.com/TudorIonutElian/write-logs-func/archive/refs/heads/main.zip
+            unzip write-logs-func.zip -d write-logs-func
+
+            mv write-logs-func/write-logs-func-main/* write-logs-func/
+            rm -r write-logs-func/write-logs-func-main
+            rm write-logs-func.zip
+
+            cd write-logs-func
+            npm install
+            ls -la
+            zip -r write_logs_func.zip . -x "*.github*"
+            aws lambda update-function-code --function-name write-logs-func --zip-file fileb://write_logs_func.zip
+            
