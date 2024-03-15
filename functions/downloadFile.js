@@ -42,7 +42,7 @@ const downloadFileFromS3 = async (fileKey) => {
        
 
     } catch (err) {
-        console.error(err);
+        console.error(`err received: ${err}`);
     }
 }
 
