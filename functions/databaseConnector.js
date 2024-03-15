@@ -6,7 +6,8 @@ function connectToDatabase(databaseName = null) {
         user: process.env.rds_instance_username,
         password: process.env.rds_instance_password,
         database: databaseName ?? null,
-        port: process.env.rds_instance_port
+        port: process.env.rds_instance_port,
+        connectTimeout: 30000
     });
 }
 
