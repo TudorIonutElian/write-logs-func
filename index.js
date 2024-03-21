@@ -7,6 +7,7 @@ exports.handler = async (event) => {
   
   const newFileKey = getFileKey(event);
   console.log(`Event: ${JSON.stringify(event)}`);
+  console.log(`Event 2: ${JSON.stringify(event)}`);
 
   // parse the new file line by line
   // connect to database
